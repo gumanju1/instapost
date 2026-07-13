@@ -75,6 +75,7 @@ GEM
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
       uri (>= 0.13.1)
+    acts_as_votable (0.14.0)
     addressable (2.9.0)
       public_suffix (>= 2.0.2, < 8.0)
     ast (2.4.3)
@@ -122,7 +123,7 @@ GEM
     ffi (1.17.4-arm-linux-musl)
     ffi (1.17.4-x86_64-linux-gnu)
     ffi (1.17.4-x86_64-linux-musl)
-    fugit (1.12.3)
+    fugit (1.13.0)
       et-orbi (~> 1.4)
       raabro (~> 1.4)
     globalid (1.4.0)
@@ -310,7 +311,7 @@ GEM
       logger
     rubyzip (3.4.1)
     securerandom (0.4.1)
-    selenium-webdriver (4.45.0)
+    selenium-webdriver (4.46.0)
       base64 (~> 0.2)
       logger (~> 1.4)
       rexml (~> 3.2, >= 3.2.5)
@@ -384,6 +385,7 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
+  acts_as_votable (~> 0.14.0)
   bcrypt (~> 3.1.7)
   bootsnap
   brakeman
@@ -424,6 +426,7 @@ CHECKSUMS
   activerecord (8.1.3) sha256=8003be7b2466ba0a2a670e603eeb0a61dd66058fccecfc49901e775260ac70ab
   activestorage (8.1.3) sha256=0564ce9309143951a67615e1bb4e090ee54b8befed417133cae614479b46384d
   activesupport (8.1.3) sha256=21a5e0dfbd4c3ddd9e1317ec6a4d782fa226e7867dc70b0743acda81a1dca20e
+  acts_as_votable (0.14.0) sha256=2e83a33e7435b1bd7dc9034ad26b02a70c15827e103cf20da60eddf924b9b5e8
   addressable (2.9.0) sha256=7fdf6ac3660f7f4e867a0838be3f6cf722ace541dd97767fa42bc6cfa980c7af
   ast (2.4.3) sha256=954615157c1d6a382bc27d690d973195e79db7f55e9765ac7c481c60bdb4d383
   base64 (0.3.0) sha256=27337aeabad6ffae05c265c450490628ef3ebd4b67be58257393227588f5a97b
@@ -454,7 +457,7 @@ CHECKSUMS
   ffi (1.17.4-arm-linux-musl) sha256=9d4838ded0465bef6e2426935f6bcc93134b6616785a84ffd2a3d82bc3cf6f95
   ffi (1.17.4-x86_64-linux-gnu) sha256=9d3db14c2eae074b382fa9c083fe95aec6e0a1451da249eab096c34002bc752d
   ffi (1.17.4-x86_64-linux-musl) sha256=3fdf9888483de005f8ef8d1cf2d3b20d86626af206cbf780f6a6a12439a9c49e
-  fugit (1.12.3) sha256=826d77739086482a6ac2805bc32693845395da688f637890cb4ca457dede2ec2
+  fugit (1.13.0) sha256=a4f093fce740da52f216740a5041e2a594ea763cdb89e8b2754ca4399634ab18
   globalid (1.4.0) sha256=037f12fbf1d9d7a014d501c2d5c77356fd4ddd96d7a7991d6700bba96706f427
   i18n (1.15.2) sha256=00f9eb62412fe593b2a65a97daa75300d37abb8f7202ec748e94b6d46a9dd1b5
   image_processing (1.14.0) sha256=754cc169c9c262980889bec6bfd325ed1dafad34f85242b5a07b60af004742fb
@@ -525,8 +528,8 @@ CHECKSUMS
   ruby-vips (2.3.0) sha256=e685ec02c13969912debbd98019e50492e12989282da5f37d05f5471442f5374
   rubyzip (3.4.1) sha256=0a79e745b5c25872ebd148457df5665da8530ed8626c993b01457128f173ca02
   securerandom (0.4.1) sha256=cc5193d414a4341b6e225f0cb4446aceca8e50d5e1888743fac16987638ea0b1
-  selenium-webdriver (4.45.0) sha256=ecac65a4df86ac6f7d707e6dcbacaa9c08b6cf2b966babecfb9653c5aa13e2d1
-  simple_form (5.4.1)
+  selenium-webdriver (4.46.0) sha256=cb6cfa6f79eac041749df0b14cdcb0e9fe5df3715a64c77bfaa56b345b99f957
+  simple_form (5.4.1) sha256=58c3d229034c7e5545035c3271b6f030ef730c340b9d7d8eb730e0a385b20808
   solid_cable (4.0.0) sha256=8379680ef6bf36e195eb876a6306ea290f87d5fa10bc4a757bc2a918f83229b5
   solid_cache (1.0.10) sha256=bc05a2fb3ac78a6f43cbb5946679cf9db67dd30d22939ededc385cb93e120d41
   solid_queue (1.4.0) sha256=e6a18d196f0b27cb6e3c77c5b31258b05fb634f8ed64fb1866ed164047216c2a

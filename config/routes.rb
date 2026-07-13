@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :comments
+    resources :upvotes, only: :create, controller: "posts/upvotes"
+    resources :downvotes, only: :create, controller: "posts/downvotes"
   end
 
   resources :sessions, only: [ :new, :create, :destroy ]
