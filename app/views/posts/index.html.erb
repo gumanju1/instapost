@@ -16,6 +16,20 @@
       <%= post.description %>
     </div>
 
+    <!-- Step 8: Display comments -->
+    <% post.comments.each do |comment| %>
+      <div class="px-2 mt-4">
+        <p class="font-bold">
+          <%= comment.user.email.split('@').first %>
+        </p>
+
+        <p>
+          <%= comment.text %>
+        </p>
+      </div>
+    <% end %>
+
+    <!-- Step 7: Comment form -->
     <%= simple_form_for Comment.new, url: post_comments_path(post), method: :post do |f| %>
       <%= f.input :text,
           label: 'Comment',
@@ -31,7 +45,7 @@
       <div class="mt-4">
         <%= link_to 'Edit Post',
           edit_post_path(post.id),
-          class: 'text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5.5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' %>
+          class: 'text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' %>
 
         <%= link_to 'Delete Post',
           post_path(post.id),
