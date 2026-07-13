@@ -1,4 +1,6 @@
 <% @posts.each do |post| %>
+  <%= image_tag post.user.photo if post.user.photo.attached? %>
+  <%= post.user.email.split('a').first %>
   <%= image_tag post.photo %>
   <%= post.description %>
 <% end %>
