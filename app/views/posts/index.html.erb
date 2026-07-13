@@ -16,19 +16,22 @@
       <%= post.description %>
     </div>
 
-    <!-- Comment form -->
-    <div class="mt-4">
-      <%= form_with model: [post, Comment.new] do |f| %>
-        <%= f.text_field :text, placeholder: "Write a comment...", class: "border rounded px-3 py-2" %>
-        <%= f.submit "Comment", class: "bg-blue-700 text-white px-4 py-2 rounded" %>
-      <% end %>
-    </div>
+    <%= simple_form_for Comment.new, url: post_comments_path(post), method: :post do |f| %>
+      <%= f.input :text,
+          label: 'Comment',
+          placeholder: 'Add a comment...',
+          label_html: { class: 'mt-4' },
+          input_html: { class: 'mt-2 md:max-w-[50%]' } %>
+
+      <%= f.submit 'Post',
+          class: 'text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' %>
+    <% end %>
 
     <% if post.user == current_user %>
       <div class="mt-4">
         <%= link_to 'Edit Post',
           edit_post_path(post.id),
-          class: 'text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' %>
+          class: 'text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5.5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' %>
 
         <%= link_to 'Delete Post',
           post_path(post.id),
