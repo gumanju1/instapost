@@ -1,9 +1,18 @@
 class PostsController < ApplicationController
   before_action :authenticate_user, only: [ :new, :create ]
   before_action :is_owner?, only: [ :edit, :update, :destroy ]
+
   def index
-    @posts = Post.all.order("created_at DESC").includes(:user, comments: :user)
+  @pagy, @posts = pagy(
+    Post.order(created_at: :desc).includes(:user, comments: :user),
+    items: 5
+  )
+
+  respond_to do |format|
+    format.html
+    format.turbo_stream
   end
+end
 
   def new
     @post = Post.new
@@ -25,8 +34,8 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    @post.update(post_params)
-    if @post.valid?
+
+    if @post.update(post_params)
       redirect_to root_path
     else
       render :edit, status: :unprocessable_entity
@@ -36,6 +45,7 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
+
     redirect_to root_path
   end
 

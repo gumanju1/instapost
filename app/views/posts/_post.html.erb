@@ -1,0 +1,80 @@
+<div class="pb-16">
+  <div class="max-w-md mx-auto">
+
+    <div>
+      <%= image_tag post.user.photo if post.user.photo.attached? %>
+    </div>
+
+    <div class="font-bold text-xl mb-2">
+      <%= link_to username(post.user_email), user_path(post.user_id) %>
+    </div>
+
+    <div>
+      <%= image_tag post.photo, class: "w-96 rounded-lg mb-4" %>
+    </div>
+
+    <div class="px-2">
+      <%= post.description %>
+    </div>
+
+    <div class="px-2 mt-2 text-sm text-gray-500">
+      Posted on <%= post.created_at.strftime("%B %d, %Y") %>
+    </div>
+
+    <%= render partial: "likes", locals: { post: post } %>
+
+    <% post.comments.each do |comment| %>
+      <div class="px-2 mt-4">
+
+        <p class="font-bold">
+          <%= link_to username(comment.user_email), user_path(comment.user_id) %>
+        </p>
+
+        <p>
+          <%= comment.text %>
+        </p>
+
+        <% if comment.user == current_user %>
+          <%= link_to "Delete Comment",
+              post_comment_path(post, comment),
+              data: { turbo_method: :delete },
+              class: "text-red-600" %>
+        <% end %>
+
+      </div>
+    <% end %>
+
+
+    <%= simple_form_for Comment.new, url: post_comments_path(post), method: :post do |f| %>
+
+      <%= f.input :text,
+          label: "Comment",
+          placeholder: "Add a comment...",
+          label_html: { class: "mt-4" },
+          input_html: { class: "mt-2 w-full" } %>
+
+      <%= f.submit "Post",
+          class: "text-white bg-blue-700 hover:bg-blue-800 rounded-lg text-sm px-5 py-2.5 mb-2" %>
+
+    <% end %>
+
+
+    <% if post.user == current_user %>
+      <div class="mt-4 flex gap-2">
+
+        <%= link_to "Edit Post",
+            edit_post_path(post),
+            class: "text-white bg-blue-700 hover:bg-blue-800 rounded-lg text-sm px-5 py-2.5" %>
+
+
+        <%= link_to "Delete Post",
+            post_path(post),
+            data: { turbo_method: :delete },
+            class: "text-white bg-red-700 hover:bg-red-800 rounded-lg text-sm px-5 py-2.5" %>
+
+      </div>
+    <% end %>
+
+
+  </div>
+</div>
