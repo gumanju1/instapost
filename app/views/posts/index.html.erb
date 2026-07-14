@@ -7,7 +7,7 @@
       </div>
 
       <div class="font-bold text-xl mb-2">
-        <%= post.user.email.split('@').first %>
+        <%= link_to username(post.user_email), user_path(post.user_id) %>
       </div>
 
       <div>
@@ -23,7 +23,7 @@
       <% post.comments.each do |comment| %>
         <div class="px-2 mt-4">
           <p class="font-bold">
-            <%= comment.user.email.split('@').first %>
+            <%= link_to username(comment.user_email), user_path(comment.user_id) %>
           </p>
 
           <p>
