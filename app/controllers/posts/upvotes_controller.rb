@@ -5,6 +5,8 @@ class Posts::UpvotesController < ApplicationController
     @post = Post.find(params[:post_id])
     @post.liked_by current_user
 
-    redirect_to root_path
+    respond_to do |format|
+      format.turbo_stream { render turbo_stream: turbo_stream.replace("post_#{params[:post_id]}_container", partial: "posts/likes", locals: { post: @post }) }
+    end
   end
 end
