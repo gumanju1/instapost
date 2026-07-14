@@ -4,16 +4,21 @@
 
 
 <%= turbo_stream.replace "load-more" do %>
-
   <% if @pagy.next %>
 
     <div id="load-more">
       <%= link_to "Load more",
           posts_path(page: @pagy.next),
           data: { turbo_stream: true },
-          class: "text-white bg-blue-700 hover:bg-blue-800 rounded-lg text-sm px-5 py-2.5 block w-fit mx-auto mb-10" %>
+          class: "text-white bg-blue-700 rounded-lg px-5 py-2.5" %>
     </div>
 
-  <% end %>
+  <% else %>
 
+    <div id="load-more"></div>
+
+  <% end %>
 <% end %>
+
+
+<%= turbo_stream.update "loader", "" %>

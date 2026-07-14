@@ -4,6 +4,14 @@
     <%= render partial: "post", collection: @posts %>
   </div>
 
+
+  <div id="loader" class="hidden text-center my-5">
+    <p class="text-gray-500">
+      Loading more posts...
+    </p>
+  </div>
+
+
   <div id="load-more">
     <% if @pagy.next %>
       <%= link_to "Load more",
