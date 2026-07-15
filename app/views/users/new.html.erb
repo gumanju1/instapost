@@ -1,0 +1,11 @@
+<h1 class="text-3xl font-bold mb-5">Sign Up</h1>
+
+<%= simple_form_for @user, url: signup_path do |f| %>
+  <%= f.input :email %>
+
+  <%= f.input :password %>
+
+  <%= f.input :password_confirmation %>
+
+  <%= f.button :submit, "Sign Up" %>
+<% end %>
