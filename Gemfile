@@ -47,7 +47,7 @@ gem "image_processing", "~> 1.2"
 
 gem "acts_as_votable", "~> 0.14.0"
 
-gem "pagy", "8.4.0"
+gem "pagy", "43.6.0"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
